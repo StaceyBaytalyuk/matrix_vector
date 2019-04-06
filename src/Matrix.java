@@ -84,6 +84,10 @@ public class Matrix {
         }
     }
 
+    public int getN() {
+        return n;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
