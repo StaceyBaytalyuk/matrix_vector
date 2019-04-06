@@ -5,6 +5,8 @@ public class Matrix {
     private int m;
     private int n;
 
+    // Параметр matrix - елементи матриці
+    // m - кількість рядків, n - кількість стовпців
     public Matrix(double[][] matrix) {
         array = matrix;
         m = array.length;
@@ -15,6 +17,7 @@ public class Matrix {
         }
     }
 
+    // Транспонування матриці (рядки і стовпці "міняються місцями")
     public Matrix transpose() {
         double[][] matrix = new double[n][m];
         for (int i = 0; i < m; i++) {
@@ -25,6 +28,7 @@ public class Matrix {
         return new Matrix(matrix);
     }
 
+    // Сума двох матриць
     public Matrix add(Matrix matrix) {
         if ( m == matrix.m && n == matrix.n ) {
             double[][] result = new double[m][n];
@@ -39,6 +43,7 @@ public class Matrix {
         }
     }
 
+    // Добуток матриці і скаляра
     public Matrix multiply(double scalar) {
         double[][] result = new double[m][];
         for (int i = 0; i < m; i++) {
@@ -52,6 +57,7 @@ public class Matrix {
         return new Matrix(result);
     }
 
+    // Добуток матриці і вектора
     public Vector multiply(Vector vector) {
         if ( n == vector.size() ) {
             double[] result = new double[m];
@@ -66,6 +72,7 @@ public class Matrix {
         }
     }
 
+    // Добуток двох матриць
     public Matrix multiply(Matrix matrix) {
         if ( n == matrix.m ) {
             int n2 = matrix.n;
