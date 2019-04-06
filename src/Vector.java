@@ -1,8 +1,12 @@
 import java.util.Arrays;
 
 public class Vector {
-    private String name;
+    private String name = "";
     private double[] array;
+
+    public Vector(double[] arr) {
+        array = arr;
+    }
 
     public Vector(String name, double[] arr) {
         this.name = name;
@@ -14,7 +18,7 @@ public class Vector {
         for (int i = 0; i < result.length; i++) {
             result[i] *= scalar;
         }
-        return new Vector("", result);
+        return new Vector(result);
     }
 
     public Double multiply(Vector v) {
@@ -37,7 +41,7 @@ public class Vector {
             for (int i = 0; i < size; i++) {
                 result[i] = array[i] + v.array[i];
             }
-            return new Vector("", result);
+            return new Vector(result);
         } else {
             return null;
         }
@@ -51,8 +55,11 @@ public class Vector {
         return Math.sqrt(result);
     }
 
-    public double get(int index) {
-        return array[index];
+    public Double get(int index) {
+        if ( index >= 0 && index < array.length ) {
+            return array[index];
+        }
+        return null;
     }
 
     public int size() {
@@ -62,5 +69,18 @@ public class Vector {
     @Override
     public String toString() {
         return name + " = " + Arrays.toString(array);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Vector vector = (Vector) o;
+        return Arrays.equals(array, vector.array);
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(array);
     }
 }

@@ -11,7 +11,6 @@ public class Main {
         System.out.println("Добуток вектора і скаляра: a*10" + a.multiply(10));
         System.out.println("Модуль вектора а = " + a.module());
 
-        //double[][] m = { {1, 2}, {3, 4}, {5, 6} };
         double[][] m1 = { {1, 2, 3}, {4, 5, 6} };
         Matrix A = new Matrix(m1);
         System.out.println("Матриця А:\n" + A);

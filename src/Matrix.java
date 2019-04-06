@@ -8,7 +8,11 @@ public class Matrix {
     public Matrix(double[][] matrix) {
         array = matrix;
         m = array.length;
-        n = array[0].length;
+        if ( m > 0 ) {
+            n = array[0].length;
+        } else {
+            n = 0;
+        }
     }
 
     public Matrix transpose() {
@@ -56,7 +60,7 @@ public class Matrix {
                     result[i] += array[i][j] * vector.get(j);
                 }
             }
-            return new Vector("", result);
+            return new Vector(result);
         } else {
             return null;
         }
@@ -87,5 +91,25 @@ public class Matrix {
             sb.append(Arrays.toString(row)).append("\n");
         }
         return sb.toString();
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Matrix matrix = (Matrix) o;
+        boolean isEqual = true;
+        for (int i = 0; i < array.length; i++) {
+            if ( !( Arrays.equals(array[i], matrix.array[i]) ) ) {
+                isEqual = false;
+                break;
+            }
+        }
+        return isEqual;
+    }
+
+    @Override
+    public int hashCode() {
+        return Arrays.hashCode(array);
     }
 }
